@@ -1,9 +1,14 @@
 ---
-description: Run a Salesforce Workbench user access review and write each persona to its own tab on a new Google spreadsheet
-alwaysApply: true
+name: test-ide
+description: >-
+  Run a Salesforce Workbench user access review for a named persona. Open
+  Workbench in Production, run that persona's saved SOQL, capture the results
+  screenshot and rows, and write each persona to its own tab on a new Google
+  spreadsheet. Use when the user asks for a user access review, a persona
+  review, Test IDE, or to capture Workbench SOQL evidence.
 ---
 
-# User access review
+# Test IDE
 
 When the user asks to run a user access review for a persona, follow this procedure. Never type a Salesforce username, password, or MFA code.
 
@@ -34,6 +39,7 @@ python scripts/write_uar_evidence.py --create-spreadsheet --persona "Sales Manag
 - If Workbench is already signed in, open https://workbench.developerforce.com/query.php and skip the login click.
 - Otherwise select the environment option labeled Production, check "I agree to the terms of service", and click "Login with Salesforce".
 - Stop and ask the user to finish Salesforce login. Continue only after they confirm they are signed in.
+- Workbench uses the Salesforce user who signs in in that browser. Do not use `credentials.json` for Workbench. That file is only the Google OAuth client.
 
 ## Run each saved query
 
